@@ -1,10 +1,10 @@
-# Jammming React Web Application
-This project involves building a React web application named Jammming. The objective is to utilize your expertise in React components, managing state, and interfacing with the Spotify API to create a website. This platform will empower users to explore the Spotify library, generate personalized playlists, and subsequently save them to their respective Spotify accounts.
+# Yoshify React Web Application
+This project involves building a React web application named Jammming. Yoshify utilizes my expertise in React components, managing state, and interfacing with the Spotify API to create a website. This platform will empower users to explore the Spotify library, generate personalized playlists, and subsequently save them to their respective Spotify accounts.
 
 ![Thumbnail of Project](./yoshify-screenshot.png)
 
 ## Overview
-Jammming is a web-based application developed using React, enabling users to perform the following actions:
+Yoshify is a web-based application developed using React, enabling users to perform the following actions:
 
 - Search the extensive Spotify library for tracks, albums, or artists.
 - Create custom playlists by adding tracks from the search results.
@@ -21,12 +21,12 @@ Clone the repository using the following command:
 
 bash
 Copy code
-  git clone https://github.com/your-username/jammming.git
+  git clone https://github.com/your-username/Yoshify-playlist-function.git
 Navigate to the project directory:
 
 bash
 Copy code
-  cd jammming
+  cd Yoshify-playlist-function
 Install the required dependencies:
 
 Copy code
