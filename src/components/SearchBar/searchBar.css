@@ -1,0 +1,13 @@
+.Search-bar {
+    display: absolute;
+    margin: 2rem;
+    width: 33vw;
+}
+
+.Search-button {
+    background-color: var(--accentColor);
+}
+
+.Search-button:hover {
+    background-color: blue;
+}

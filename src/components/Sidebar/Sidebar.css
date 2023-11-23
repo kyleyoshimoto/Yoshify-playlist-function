@@ -1,0 +1,22 @@
+.sidebar {
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 18vw;
+    height: 300%;
+    background-color: black;
+}
+
+hr {
+    color: white;
+}
+
+.sidebar > p {
+    padding: 0 1rem;
+    color: gray;
+    transition: 200ms color ease-in;
+}
+
+.sidebar > p:hover {
+    color: white;
+}

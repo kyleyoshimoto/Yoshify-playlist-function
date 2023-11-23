@@ -1,0 +1,40 @@
+.Playlist {
+    position: sticky;
+    left: 39vw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 20vh;
+    width: 41.5vw;
+    background-color: var(--backColor);
+    border-radius: 5px;
+}
+
+label {
+    font-size: 1.6rem;
+    color: white;
+}
+
+.Playlist input {
+    height: 1.6rem;
+    width: 60%;
+    margin-top: 1rem;
+    margin-bottom: 1.5rem;
+    border-radius: 4px;
+    background-color: rgba(255, 255, 255, 0.9);
+}
+
+.Playlist-save {
+    height: 2rem;
+    box-shadow: 0.3em 0.3em 0 0 var(--accentColor), 
+    inset 0.3em 0.3em 0 0 var(--accentColor);
+    transition: 0.25s;
+
+    &:hover,
+    &:focus {
+        box-shadow: 0 0 0 0 var(--accentColor),
+        inset 6em 3.5em 0 0 var(--accentColor);
+        color: white;
+    }
+}

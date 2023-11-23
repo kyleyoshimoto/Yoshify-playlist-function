@@ -1,0 +1,11 @@
+@font-face {
+    font-family: 'Quicksand', sans-serif;
+    src: local('Quicksand'),
+    url('./static/Quicksand-Regular.ttf') format('ttf');
+}
+
+@font-face {
+    font-family: 'Nicomedia', sans-serif;
+    src: local('Nicomedia'),
+    url('./nicomedia-font/NicomediaHalftoneItalic-VGqg6.otf') format('otf');
+}

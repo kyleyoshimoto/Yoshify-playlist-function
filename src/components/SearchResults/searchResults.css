@@ -1,0 +1,17 @@
+.Search-results {
+    position: absolute;
+    left: .5vw;
+    display: flex;
+    flex-direction: column;
+    width: 38vw;
+    min-height: 20vh;
+    background-color: var(--backColor);
+    border-radius: 5px;
+}
+
+h2 {
+    font-size: 2rem;
+    color: white;
+    margin: 2rem;
+    align-self: start;
+}

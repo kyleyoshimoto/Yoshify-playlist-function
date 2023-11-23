@@ -1,0 +1,41 @@
+.Track {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    background-color: var(--backColor);
+    border: 1px solid black;
+}
+
+.Track-information {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    background: var(--frontColor);
+    border-radius: 4px;
+    margin: 1px 0;
+}
+
+.Track p {
+    color: gray;
+    align-self: start;
+}
+
+.Track h3 {
+    color: white;
+    margin: 0.2rem;
+    text-align: left;
+}
+
+.Track > button {
+    position: absolute;
+    right: 1rem;
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    color: white;
+}
+
+.Track > button:hover {
+    transition: transform 0.2s ease-in-out;
+    transform: scale(1.5) !important;
+}

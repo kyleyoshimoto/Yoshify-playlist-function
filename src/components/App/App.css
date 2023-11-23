@@ -1,0 +1,51 @@
+:root {
+  --accentColor: #0018A8; /*Pantone Blue*/
+  --backColor: rgba(0, 0, 0, 0.9); 
+  --frontColor: rgba(36, 36, 36, 0.9);
+}
+
+body {
+  background-image: url('./media/background.jpg'); 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
+.App {
+  text-align: center;
+  background-image: none;
+  height: 1000%;
+}
+
+.App-logo {
+  position: absolute;
+  top: 0;
+  height: 40vmin;
+  pointer-events: none;
+  color: var(--accentColor);
+  height: 20vw;
+  width: auto;
+}
+
+h1 {
+  position: absolute;
+  color: white;
+  text-shadow: 2px 2px black, 5px 5px gray;
+  top: 1.8rem;
+  left: 10vw;
+}
+
+.App-header {
+  height: 20vw;
+  padding-bottom: 3vw;
+  display: flex;
+  align-items: center;
+  font-size: calc(10px + 2vmin);
+  background: linear-gradient(rgb(0, 0, 0), rgba(0, 0, 0, 0.85),  transparent);
+}
+
+.App-title {
+  padding-left: 3rem;
+  font-size: 8vw;
+}
