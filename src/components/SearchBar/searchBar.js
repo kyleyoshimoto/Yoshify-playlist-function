@@ -3,6 +3,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import {Container, InputGroup, FormControl, Button} from 'react-bootstrap';
 
 import "./searchBar.css";
+import SearchSharpIcon from '@mui/icons-material/SearchSharp';
 
 function SearchBar(props) {
     const [searchInput, setSearchInput] = useState('');
@@ -13,7 +14,8 @@ function SearchBar(props) {
 
     return (
         <Container className='Search-bar'>
-            <InputGroup ClassName='mb-3' type='text' placeholder='Enter a Song Title, Artist, or Genre...' >
+            <InputGroup ClassName='mb-3' type='text' placeholder='Artist, Title, Album, or More' >
+                <SearchSharpIcon className="search-icon" fontSize='large' />
                 <FormControl
                     placeholder="Search For Artists, Songs, or Albums"
                     type="input"

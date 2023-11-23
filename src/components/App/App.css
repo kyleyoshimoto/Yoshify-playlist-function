@@ -5,17 +5,19 @@
 }
 
 body {
-  background-image: url('./media/background.jpg'); 
+  /*background-image: url('./media/background.jpg'); 
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
-  background-size: cover;
+  background-size: cover;*/
+  background: linear-gradient(transparent, black, black, black);
+  background-color: rgb(31, 63, 66);
+  background-size: 1000%;
+  height: 275vh;
 }
 
 .App {
   text-align: center;
-  background-image: none;
-  height: 1000%;
 }
 
 .App-logo {
@@ -42,10 +44,20 @@ h1 {
   display: flex;
   align-items: center;
   font-size: calc(10px + 2vmin);
-  background: linear-gradient(rgb(0, 0, 0), rgba(0, 0, 0, 0.85),  transparent);
 }
 
 .App-title {
   padding-left: 3rem;
   font-size: 8vw;
+}
+
+.App-playlist {
+  display: flex;
+  width: 82vw;
+}
+
+.search {
+  display: flex;
+  flex-direction: column;
+  flex: 0.6;
 }

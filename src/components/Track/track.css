@@ -27,7 +27,6 @@
 }
 
 .Track > button {
-    position: absolute;
     right: 1rem;
     background: none;
     border: none;

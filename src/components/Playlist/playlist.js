@@ -16,6 +16,7 @@ function Playlist(props) {
         <div className='Playlist'>
             <label for='pTitle'>Playlist Title</label>
             <input id='pTitle' placeholder='Enter Title...' onChange={handleNameChange} defaultValue="New Playlist"/>
+            <hr />
             <TrackList
                 tracks={props.playlistTracks}
                 isRemoval={true}

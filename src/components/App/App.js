@@ -51,17 +51,19 @@ function App() {
 
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-	      <h1 className="App-title">Yoshify</h1>
-      </header>
       <body>
-        <SearchBar onSearch={search}/>
+        <header className="App-header">
+          <img src={logo} className="App-logo" alt="logo" />
+          <h1 className="App-title">Yoshify</h1>
+        </header>
         <div className='App-playlist'>
-          <SearchResults 
-            searchResults={searchResults}
-            onAdd={addTracks}
-          />
+          <div className="search">
+            <SearchBar onSearch={search}/>
+            <SearchResults 
+              searchResults={searchResults}
+              onAdd={addTracks}
+            />
+          </div>
           <Playlist 
             playlistName={playlistName}
             playlistTracks={playlistTracks}

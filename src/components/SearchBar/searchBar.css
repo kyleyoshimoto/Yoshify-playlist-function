@@ -1,11 +1,15 @@
 .Search-bar {
-    display: absolute;
     margin: 2rem;
-    width: 33vw;
+    width: 90%;
+}
+
+.search-icon {
+    color: white;
 }
 
 .Search-button {
-    background-color: var(--accentColor);
+    background-color: rgb(31, 63, 66);
+    border-color: white;
 }
 
 .Search-button:hover {

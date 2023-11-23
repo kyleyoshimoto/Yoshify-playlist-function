@@ -2,8 +2,9 @@
     position: absolute;
     right: 0;
     top: 0;
-    width: 18vw;
-    height: 300%;
+    width: 16.5vw;
+    height: 275vh;
+    background: linear-gradient(black, black, transparent);
     background-color: black;
 }
 
