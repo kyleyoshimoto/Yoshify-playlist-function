@@ -16,6 +16,10 @@ body {
   height: 275vh;
 }
 
+body::-webkit-scrollbar {
+  display: none;
+}
+
 .App {
   text-align: center;
 }
