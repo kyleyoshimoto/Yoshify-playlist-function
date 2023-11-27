@@ -57,11 +57,11 @@ h1 {
 
 .App-playlist {
   display: flex;
-  width: 82vw;
+  width: 100%;
 }
 
 .search {
   display: flex;
   flex-direction: column;
-  flex: 0.6;
+  flex: 0.45;
 }

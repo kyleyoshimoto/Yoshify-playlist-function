@@ -1,4 +1,4 @@
-const clientId = '';
+const clientId = 'e387fa01d3fa40aaa56e3c2a097c2156';
 const redirectUri = 'http://localhost:3000/'; // Have to add this to your accepted Spotify redirect URIs on the Spotify API.
 const scopes = [
     "user-read-currently-playing",

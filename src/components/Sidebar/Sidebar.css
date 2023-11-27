@@ -6,6 +6,7 @@
     height: 275vh;
     background: linear-gradient(black, black, transparent);
     background-color: black;
+    flex: 0.20;
 }
 
 .userInfo {
