@@ -1,7 +1,4 @@
-import React, {useEffect} from 'react';
-
-const clientId = 'e387fa01d3fa40aaa56e3c2a097c2156';
-//const clientSecret = '00c90fd82f85425d9ed76296021b006c';
+const clientId = '';
 const redirectUri = 'http://localhost:3000/'; // Have to add this to your accepted Spotify redirect URIs on the Spotify API.
 const scopes = [
     "user-read-currently-playing",
@@ -33,6 +30,22 @@ const Spotify = {
     }
   },
 
+  getUserProfile() {
+    const accessToken = Spotify.getAccessToken();
+    return fetch('https://api.spotify.com/v1/me', {
+      headers: {
+        Authorization: `Bearer ${accessToken}`
+      }
+    }).then(response => {
+      return response.json();
+    }).then(jsonResponse => {
+      return {
+        name: jsonResponse.display_name,
+        imageUrl: jsonResponse.images[0].url,
+      }
+    })
+  },
+
 
   search(term) {
     const accessToken = Spotify.getAccessToken();
@@ -51,7 +64,8 @@ const Spotify = {
         name: track.name,
         artist: track.artists[0].name,
         album: track.album.name,
-        uri: track.uri
+        albumCover: track.album.images[0].url,
+        uri: track.uri,
       }));
     });
   },

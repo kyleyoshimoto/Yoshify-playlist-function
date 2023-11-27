@@ -14,6 +14,8 @@ function App() {
   const [playlistName, setPlaylistName] = useState("New Playlist");
   const [playlistTracks, setPlaylistTracks] = useState([]);
   const [playlists, setPlaylists] = useState([]);
+  const [username, setUsername] = useState("User");
+  const [userImage, setUserImage] = useState("https://upload.wikimedia.org/wikipedia/commons/thumb/b/b5/Windows_10_Default_Profile_Picture.svg/2048px-Windows_10_Default_Profile_Picture.svg.png")
 
   const search = useCallback((input) => {
     Spotify.search(input).then(setSearchResults)
@@ -46,8 +48,14 @@ function App() {
   }, [playlistName, playlistTracks]);
 
   useEffect(() => {
-    Spotify.getPlaylists().then(setPlaylists)
+    Spotify.getPlaylists().then(setPlaylists);
+    Spotify.getUserProfile().then(response => {
+      setUsername(response.name);
+      setUserImage(response.imageUrl);
+    })
+
   }, [savePlaylist]);
+
 
   return (
     <div className="App">
@@ -71,7 +79,11 @@ function App() {
             onRemove={removeTracks}
             onSave={savePlaylist}
           />
-          <Sidebar playlists={playlists} />
+          <Sidebar 
+            playlists={playlists}
+            username={username}
+            userImage={userImage}
+            />
         </div>
       </body>
     </div>

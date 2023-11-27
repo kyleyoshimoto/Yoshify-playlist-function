@@ -8,6 +8,26 @@
     background-color: black;
 }
 
+.userInfo {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    background-color: var(--frontColor);
+    border-radius: 40px;
+    margin: 2rem;
+}
+
+.userInfo > img {
+    height: 3.5rem;
+    border-radius: 100%;
+    margin: 0.2rem 0.5rem;
+}
+
+.userInfo > h3 {
+    color: white;
+    font-size: 1.4rem;
+}
+
 hr {
     color: white;
 }

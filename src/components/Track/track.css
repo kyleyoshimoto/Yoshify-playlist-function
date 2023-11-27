@@ -13,17 +13,23 @@
     background: var(--frontColor);
     border-radius: 4px;
     margin: 1px 0;
+    padding-left: 0.5rem;
 }
 
-.Track p {
-    color: gray;
-    align-self: start;
+.Track > img {
+    height: 100%;
+    width: 5rem;
 }
 
 .Track h3 {
     color: white;
     margin: 0.2rem;
     text-align: left;
+}
+
+.Track p {
+    color: gray;
+    align-self: start;
 }
 
 .Track > button {
