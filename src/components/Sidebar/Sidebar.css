@@ -18,14 +18,14 @@
 }
 
 .userInfo > img {
-    height: 3.5rem;
+    height: 3vw;
     border-radius: 100%;
     margin: 0.2rem 0.5rem;
 }
 
 .userInfo > h3 {
     color: white;
-    font-size: 1.4rem;
+    font-size: 1vw;
 }
 
 hr {
