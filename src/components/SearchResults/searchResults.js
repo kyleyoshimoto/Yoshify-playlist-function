@@ -22,7 +22,7 @@ function SearchResults(props) {
             return <p>The overall estimated tempo of a track in beats per minute (BPM). In musical terminology, tempo is the speed or pace of a given piece and derives directly from the average beat duration.</p>
         } else if (analysisFeature == "valence") {
             return <p>A measure from 0.0 to 1.0 describing the musical positiveness conveyed by a track. Tracks with high valence sound more positive (e.g. happy, cheerful, euphoric), while tracks with low valence sound more negative (e.g. sad, depressed, angry).</p>
-        } else {
+        } else if (analysisFeature == "default") {
             <p>Get audio features for multiple tracks.</p>
         }
     }

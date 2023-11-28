@@ -85,9 +85,9 @@ const Spotify = {
     })
     },
 
-  getTrackAudioFeatures(trackId) {
+  getTrackAudioFeatures(trackIds) {
     const accessToken = Spotify.getAccessToken();
-    return fetch(`https://api.spotify.com/v1/audio-features/${trackId}`, {
+    return fetch(`https://api.spotify.com/v1/audio-features?id=${trackIds}`, {
       headers: {
         Authorization: `Bearer ${accessToken}`
       }
@@ -97,14 +97,17 @@ const Spotify = {
       if (!jsonResponse) {
         return {};
       }
-      return {
-        id: jsonResponse.id,
-        danceability: jsonResponse.danceability,
-        energy: jsonResponse.energy,
-        loudness: jsonResponse.loudness,
-        tempo: jsonResponse.tempo,
-        valence: jsonResponse.valence
+      let features = {};
+      for (let i = 0; i < jsonResponse.audio_features.length; i++) {
+        features[jsonResponse.audio_features[i].id] = {
+          danceability: jsonResponse.audio_features[i].danceability,
+          energy: jsonResponse.audio_features[i].energy,
+          loudness: jsonResponse.audio_features[i].loudness,
+          tempo: jsonResponse.audio_features[i].tempo,
+          valence: jsonResponse.audio_features[i].valence
+        }
       }
+      return features;
     })
   },
 

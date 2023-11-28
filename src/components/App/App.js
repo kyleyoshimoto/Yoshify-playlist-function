@@ -11,6 +11,7 @@ import logo from './logo.svg';
 
 function App() {
   const [searchResults, setSearchResults] = useState([]);
+  const [trackFeatures, setTrackFeatures] = useState([]);
   const [playlistName, setPlaylistName] = useState("New Playlist");
   const [playlistTracks, setPlaylistTracks] = useState([]);
   const [playlists, setPlaylists] = useState([]);
@@ -19,11 +20,19 @@ function App() {
 
   const search = useCallback((input) => {
     Spotify.search(input).then(setSearchResults);
+    console.log(searchResults)
+    const trackIds = [];
+    for (let i=0; i < searchResults.length; i++) {
+      trackIds.push(searchResults[i].id);
+    }
+    console.log(trackIds.join(","))
+    Spotify.getTrackAudioFeatures(trackIds.join(",")).then(setTrackFeatures);
+    console.log(trackFeatures)
   }, []);
 
-  const getTrackFeatures = useCallback((trackId) => {
-    return Spotify.getTrackAudioFeatures(trackId);
-  }, []);
+  /*const getTrackFeatures = useCallback((trackIds) => {
+    return Spotify.getTrackAudioFeatures(trackIds);
+  }, []);*/
 
   const addTracks = useCallback((track) => {
     if (playlistTracks.some((savedTrack) => savedTrack.id === track.id)) 
@@ -72,7 +81,7 @@ function App() {
             <SearchBar onSearch={search}/>
             <SearchResults 
               searchResults={searchResults}
-              getTrackDetails={getTrackFeatures}
+              //getTrackDetails={getTrackFeatures}
               onAdd={addTracks}
               onSearch={search}
             />
@@ -83,7 +92,7 @@ function App() {
             onNameChange={updatePlaylistName}
             onRemove={removeTracks}
             onSave={savePlaylist}
-            getTrackDetails={getTrackFeatures}
+            //getTrackDetails={getTrackFeatures}
           />
           <Sidebar 
             playlists={playlists}
