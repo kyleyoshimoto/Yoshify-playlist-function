@@ -10,7 +10,7 @@ function SearchBar(props) {
 
     const search = useCallback(() => {
         props.onSearch(searchInput);
-    }, [props.onSearch, searchInput]);
+    }, [searchInput]);
 
     return (
         <Container className='Search-bar'>
@@ -20,7 +20,7 @@ function SearchBar(props) {
                     placeholder="Search For Artists, Songs, or Albums"
                     type="input"
                     onKeyPress={event => {
-                        if (event.key == "Enter") {
+                        if (event.key === "Enter") {
                             search()
                         }
                     }}

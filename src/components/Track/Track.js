@@ -1,9 +1,9 @@
-import React, {useState, useEffect, useCallback} from 'react';
+import React, {useCallback} from 'react';
 
 import './track.css';
 
 function Track(props) {
-    const [trackFeatures, setTrackFeatures] = useState([]);
+    /*const [trackFeatures, setTrackFeatures] = useState([]);
 
     const getTrackFeatures = useCallback(
         (event) => {
@@ -12,11 +12,11 @@ function Track(props) {
         [props.onSearch]
     );
 
-    /*useEffect(() => {
+    useEffect(() => {
         props.getTrackDetails(props.track.id).then(setTrackFeatures)
-    }, [props.onSearch]);*/
+    }, [props.onSearch]);
 
-    console.log(trackFeatures);
+    console.log(trackFeatures);*/
 
     const addTrack = useCallback(
         (event) => {
@@ -47,7 +47,7 @@ function Track(props) {
         );
     };
 
-    const renderAnalysis = () => {
+    /*const renderAnalysis = () => {
         if (props.analysisFeature === 'energy') {
             return (
                 <div className='feature'>
@@ -84,16 +84,16 @@ function Track(props) {
                 </div>
             )
         }
-    }
+    }*/
 
     return (
-        <div className="Track" onLoad={getTrackFeatures}>
+        <div className="Track">
             <img src={props.track.albumCover} alt={props.track.album} />
             <div className="Track-information">
                 <h3>{props.track.name}</h3>
                 <p>{props.track.artist} | {props.track.album}</p>
             </div>
-            {renderAnalysis()}
+            {/*renderAnalysis()*/}
             {renderAction()}
         </div>
     );

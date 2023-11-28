@@ -44,7 +44,7 @@ function SearchResults(props) {
                 {renderDescription()}
             </div>
             <hr />
-            {props.searchResults.length == 0 
+            {props.searchResults.length === 0 
                 ? <h2>Search Results</h2> 
                 : <TrackList 
                     tracks={props.searchResults}
