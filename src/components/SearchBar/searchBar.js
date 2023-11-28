@@ -7,10 +7,11 @@ import SearchSharpIcon from '@mui/icons-material/SearchSharp';
 
 function SearchBar(props) {
     const [searchInput, setSearchInput] = useState('');
+    const { onSearch } = props;
 
     const search = useCallback(() => {
         props.onSearch(searchInput);
-    }, [searchInput]);
+    }, [onSearch, searchInput]);
 
     return (
         <Container className='Search-bar'>
