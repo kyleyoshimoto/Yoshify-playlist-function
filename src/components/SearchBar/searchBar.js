@@ -10,7 +10,7 @@ function SearchBar(props) {
     const { onSearch } = props;
 
     const search = useCallback(() => {
-        props.onSearch(searchInput);
+        onSearch(searchInput);
     }, [onSearch, searchInput]);
 
     return (
