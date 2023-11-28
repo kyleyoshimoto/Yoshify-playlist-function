@@ -18,7 +18,11 @@ function App() {
   const [userImage, setUserImage] = useState("https://upload.wikimedia.org/wikipedia/commons/thumb/b/b5/Windows_10_Default_Profile_Picture.svg/2048px-Windows_10_Default_Profile_Picture.svg.png")
 
   const search = useCallback((input) => {
-    Spotify.search(input).then(setSearchResults)
+    Spotify.search(input).then(setSearchResults);
+  }, []);
+
+  const getTrackFeatures = useCallback((trackId) => {
+    return Spotify.getTrackAudioFeatures(trackId);
   }, []);
 
   const addTracks = useCallback((track) => {
@@ -37,7 +41,7 @@ function App() {
 
   const updatePlaylistName = useCallback((name) => {
     setPlaylistName(name);
-  }, [])
+  }, []);
 
   const savePlaylist = useCallback(() => {
     const trackUris = playlistTracks.map(track => track.uri);
@@ -56,7 +60,6 @@ function App() {
 
   }, [savePlaylist]);
 
-
   return (
     <div className="App">
       <body>
@@ -69,7 +72,9 @@ function App() {
             <SearchBar onSearch={search}/>
             <SearchResults 
               searchResults={searchResults}
+              getTrackDetails={getTrackFeatures}
               onAdd={addTracks}
+              onSearch={search}
             />
           </div>
           <Playlist 
@@ -78,6 +83,7 @@ function App() {
             onNameChange={updatePlaylistName}
             onRemove={removeTracks}
             onSave={savePlaylist}
+            getTrackDetails={getTrackFeatures}
           />
           <Sidebar 
             playlists={playlists}

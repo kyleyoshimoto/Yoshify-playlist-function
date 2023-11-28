@@ -33,6 +33,10 @@ hr {
     color: white;
 }
 
+.sidebar > h2 {
+    color: white;
+}
+
 .sidebar > p {
     padding: 0 1rem;
     color: gray;

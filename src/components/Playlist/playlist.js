@@ -21,6 +21,7 @@ function Playlist(props) {
                 tracks={props.playlistTracks}
                 isRemoval={true}
                 onRemove={props.onRemove}
+                getTrackDetails={props.getTrackFeatures}
             />
             <button className='Playlist-save' onClick={props.onSave}>SAVE TO SPOTIFY</button>
         </div>

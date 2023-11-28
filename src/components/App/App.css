@@ -1,5 +1,5 @@
 :root {
-  --accentColor: #0018A8; /*Pantone Blue*/
+  --accentColor: rgb(31, 63, 66); /*Pantone Blue*/
   --backColor: rgba(0, 0, 0, 0.9); 
   --frontColor: rgba(36, 36, 36, 0.9);
 }

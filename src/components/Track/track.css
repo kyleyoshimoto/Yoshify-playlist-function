@@ -32,6 +32,11 @@
     align-self: start;
 }
 
+.feature {
+    width: 5vw;
+    padding: 0 5px;
+}
+
 .Track > button {
     right: 1rem;
     background: none;

@@ -1,8 +1,7 @@
-const clientId = 'e387fa01d3fa40aaa56e3c2a097c2156';
+const clientId = '';
 const redirectUri = 'http://localhost:3000/'; // Have to add this to your accepted Spotify redirect URIs on the Spotify API.
 const scopes = [
     "user-read-currently-playing",
-    "user-read-recently-played",
     "user-read-playback-state",
     "user-top-read",
     "user-modify-playback-state",
@@ -49,7 +48,7 @@ const Spotify = {
 
   search(term) {
     const accessToken = Spotify.getAccessToken();
-    return fetch(`https://api.spotify.com/v1/search?type=track&q=${term}`, {
+    return fetch(`https://api.spotify.com/v1/search?type=track&limit=10&q=${term}`, {
       headers: {
         Authorization: `Bearer ${accessToken}`
       }
@@ -85,6 +84,29 @@ const Spotify = {
         return jsonResponse.items.map(playlist => playlist.name);
     })
     },
+
+  getTrackAudioFeatures(trackId) {
+    const accessToken = Spotify.getAccessToken();
+    return fetch(`https://api.spotify.com/v1/audio-features/${trackId}`, {
+      headers: {
+        Authorization: `Bearer ${accessToken}`
+      }
+    }).then(response => {
+      return response.json();
+    }).then(jsonResponse => {
+      if (!jsonResponse) {
+        return {};
+      }
+      return {
+        id: jsonResponse.id,
+        danceability: jsonResponse.danceability,
+        energy: jsonResponse.energy,
+        loudness: jsonResponse.loudness,
+        tempo: jsonResponse.tempo,
+        valence: jsonResponse.valence
+      }
+    })
+  },
 
   savePlaylist(name, trackUris) {
     if (!name || !trackUris.length) {

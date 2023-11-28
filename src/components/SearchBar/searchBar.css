@@ -13,5 +13,6 @@
 }
 
 .Search-button:hover {
-    background-color: blue;
+    background-color: black;
+    border-color: white;
 }

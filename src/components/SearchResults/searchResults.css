@@ -7,9 +7,25 @@
     border-radius: 5px;
 }
 
-h2 {
+.Results-header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.Results-header > h2 {
     font-size: 2rem;
     color: white;
     margin: 2rem;
-    align-self: start;
+}
+
+select {
+    height: 2.4rem;
+}
+
+.Results-header p {
+    width: 95%;
+    margin: 0.8rem;
+    color: white;
 }
