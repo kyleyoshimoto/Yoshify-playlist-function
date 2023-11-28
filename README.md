@@ -1,5 +1,5 @@
 # Yoshify React Web Application
-This project involves building a React web application named Yoshify. Yoshify utilizes my expertise in React components, managing state, and interfacing with the Spotify API to create a website. This platform will empower users to explore the Spotify library; view track statistics such as valence, tempo, danceability, and more; generate personalized playlists; and subsequently save them to their respective Spotify accounts.
+Yoshify utilizes my expertise in React components, managing state, and interfacing with the Spotify API to create a website. This platform will empower users to explore the Spotify library; view track statistics such as valence, tempo, danceability, and more; generate personalized playlists; and subsequently save them to their respective Spotify accounts.
 
 ![Thumbnail of Project](./yoshify-screenshot.png)
 
