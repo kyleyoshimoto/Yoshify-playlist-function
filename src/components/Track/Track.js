@@ -48,35 +48,35 @@ function Track(props) {
     };
 
     const renderAnalysis = () => {
-        if (props.analysisFeature == 'energy') {
+        if (props.analysisFeature === 'energy') {
             return (
                 <div className='feature'>
                     <p>Energy:</p>
                     <p>{(trackFeatures.energy * 100).toFixed(1)}</p>
                 </div>
             )
-        } else if (props.analysisFeature == 'danceability') {
+        } else if (props.analysisFeature === 'danceability') {
             return (
                 <div className='feature'>
                     <p>Danceability:</p>
                     <p>{(trackFeatures.danceability * 100).toFixed(1)}</p>
                 </div>
             )
-        } else if (props.analysisFeature == 'loudness') {
+        } else if (props.analysisFeature === 'loudness') {
             return (
                 <div className='feature'>
                     <p>Loudness:</p>
                     <p>{trackFeatures.loudness}</p>
                 </div>
             )
-        } else if (props.analysisFeature == 'tempo') {
+        } else if (props.analysisFeature === 'tempo') {
             return (
                 <div className='feature'>
                     <p>BPM:</p>
                     <p>{trackFeatures.tempo}</p>
                 </div>
             )
-        } else if (props.analysisFeature == 'valence') {
+        } else if (props.analysisFeature === 'valence') {
             return (
                 <div className='feature'>
                     <p>Valence:</p>
