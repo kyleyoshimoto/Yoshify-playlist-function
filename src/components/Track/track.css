@@ -37,6 +37,12 @@
     padding: 0 5px;
 }
 
+.feature .value {
+    color: white;
+    font-size: 1.4rem;
+    margin: 0;
+}
+
 .Track > button {
     right: 1rem;
     background: none;

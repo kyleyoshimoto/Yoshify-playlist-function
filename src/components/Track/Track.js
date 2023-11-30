@@ -35,39 +35,43 @@ function Track(props) {
     };
 
     const renderAnalysis = () => {
+        if (!props.trackFeatures) {
+            console.log("No track features!!!!!")
+            return <></>
+        }
         if (props.analysisFeature === 'energy') {
             return (
                 <div className='feature'>
                     <p>Energy:</p>
-                    <p>{(trackFeatures.energy * 100).toFixed(1)}</p>
+                    <p className="value">{(trackFeatures.energy * 100).toFixed(1)}</p>
                 </div>
             )
         } else if (props.analysisFeature === 'danceability') {
             return (
                 <div className='feature'>
                     <p>Danceability:</p>
-                    <p>{(trackFeatures.danceability * 100).toFixed(1)}</p>
+                    <p className="value">{(trackFeatures.danceability * 100).toFixed(1)}</p>
                 </div>
             )
         } else if (props.analysisFeature === 'loudness') {
             return (
                 <div className='feature'>
                     <p>Loudness:</p>
-                    <p>{trackFeatures.loudness}</p>
+                    <p className="value">{trackFeatures.loudness}</p>
                 </div>
             )
         } else if (props.analysisFeature === 'tempo') {
             return (
                 <div className='feature'>
                     <p>BPM:</p>
-                    <p>{trackFeatures.tempo}</p>
+                    <p className="value">{(trackFeatures.tempo).toFixed(1)}</p>
                 </div>
             )
         } else if (props.analysisFeature === 'valence') {
             return (
                 <div className='feature'>
                     <p>Valence:</p>
-                    <p>{(trackFeatures.valence * 100).toFixed(1)}</p>
+                    <p className="value">{(trackFeatures.valence * 100).toFixed(1)}</p>
                 </div>
             )
         } else {
