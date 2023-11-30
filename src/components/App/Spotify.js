@@ -1,4 +1,5 @@
-const clientId = '';
+const client_id = 'e387fa01d3fa40aaa56e3c2a097c2156';
+const client_secret = '00c90fd82f85425d9ed76296021b006c';
 const redirectUri = 'http://localhost:3000/'; // Have to add this to your accepted Spotify redirect URIs on the Spotify API.
 const scopes = [
     "user-read-currently-playing",
@@ -24,7 +25,7 @@ const Spotify = {
       window.history.pushState('Access Token', null, '/'); // This clears the parameters, allowing us to grab a new access token when it expires.
       return accessToken;
     } else {
-      const accessUrl = `https://accounts.spotify.com/authorize?client_id=${clientId}&response_type=token&scope=${scopes.join("%20")}&redirect_uri=${redirectUri}`;
+      const accessUrl = `https://accounts.spotify.com/authorize?client_id=${client_id}&response_type=token&scope=${scopes.join("%20")}&redirect_uri=${redirectUri}`;
       window.location = accessUrl;
     }
   },
@@ -87,18 +88,21 @@ const Spotify = {
 
   getTrackAudioFeatures(trackIds) {
     const accessToken = Spotify.getAccessToken();
-    return fetch(`https://api.spotify.com/v1/audio-features?id=${trackIds}`, {
+    return fetch(`https://api.spotify.com/v1/audio-features?ids=${trackIds}`, {
       headers: {
         Authorization: `Bearer ${accessToken}`
       }
     }).then(response => {
       return response.json();
     }).then(jsonResponse => {
-      if (!jsonResponse) {
+      if (!jsonResponse.audio_features) {
         return {};
       }
       let features = {};
+      console.log('jsonResponse.audio_features');
+      console.log(jsonResponse.audio_features);
       for (let i = 0; i < jsonResponse.audio_features.length; i++) {
+        console.log('yes');
         features[jsonResponse.audio_features[i].id] = {
           danceability: jsonResponse.audio_features[i].danceability,
           energy: jsonResponse.audio_features[i].energy,
@@ -106,7 +110,9 @@ const Spotify = {
           tempo: jsonResponse.audio_features[i].tempo,
           valence: jsonResponse.audio_features[i].valence
         }
-      }
+      };
+      console.log('TrackAudioFeatures -------');
+      console.log(features);
       return features;
     })
   },

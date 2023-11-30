@@ -2,6 +2,7 @@ import React, {useState, useCallback, useEffect} from 'react';
 
 import Spotify from './Spotify';
 import SearchBar from '../SearchBar/searchBar';
+import Analysis from '../Analysis/Analysis';
 import SearchResults from '../SearchResults/searchResults';
 import Playlist from '../Playlist/playlist';
 import Sidebar from '../Sidebar/Sidebar';
@@ -11,28 +12,25 @@ import logo from './logo.svg';
 
 function App() {
   const [searchResults, setSearchResults] = useState([]);
-  const [trackFeatures, setTrackFeatures] = useState([]);
+  const [analysisFeature, setAnalysisFeature] = useState("");
+  const [trackFeatures, setTrackFeatures] = useState({});
   const [playlistName, setPlaylistName] = useState("New Playlist");
   const [playlistTracks, setPlaylistTracks] = useState([]);
   const [playlists, setPlaylists] = useState([]);
   const [username, setUsername] = useState("User");
-  const [userImage, setUserImage] = useState("https://upload.wikimedia.org/wikipedia/commons/thumb/b/b5/Windows_10_Default_Profile_Picture.svg/2048px-Windows_10_Default_Profile_Picture.svg.png")
+  const [userImage, setUserImage] = useState("https://upload.wikimedia.org/wikipedia/commons/thumb/b/b5/Windows_10_Default_Profile_Picture.svg/2048px-Windows_10_Default_Profile_Picture.svg.png");
 
   const search = useCallback((input) => {
     Spotify.search(input).then(setSearchResults);
-    console.log(searchResults)
-    const trackIds = [];
-    for (let i=0; i < searchResults.length; i++) {
-      trackIds.push(searchResults[i].id);
-    }
-    console.log(trackIds.join(","))
-    Spotify.getTrackAudioFeatures(trackIds.join(",")).then(setTrackFeatures);
-    console.log(trackFeatures)
   }, []);
 
-  /*const getTrackFeatures = useCallback((trackIds) => {
-    return Spotify.getTrackAudioFeatures(trackIds);
-  }, []);*/
+  const getTrackFeatures = useCallback((trackIds) => {
+    Spotify.getTrackAudioFeatures(trackIds).then(setTrackFeatures);
+  }, []);
+
+  const getAnalysisFeature = useCallback((feature) => {
+    setAnalysisFeature(feature);
+  })
 
   const addTracks = useCallback((track) => {
     if (playlistTracks.some((savedTrack) => savedTrack.id === track.id)) 
@@ -65,8 +63,7 @@ function App() {
     Spotify.getUserProfile().then(response => {
       setUsername(response.name);
       setUserImage(response.imageUrl);
-    })
-
+    });
   }, [savePlaylist]);
 
   return (
@@ -79,9 +76,15 @@ function App() {
         <div className='App-playlist'>
           <div className="search">
             <SearchBar onSearch={search}/>
+            <Analysis 
+                getTrackFeatures={getTrackFeatures}
+                getFeature={getAnalysisFeature}
+                searchResults={searchResults}
+            />
             <SearchResults 
               searchResults={searchResults}
-              //getTrackDetails={getTrackFeatures}
+              trackFeatures={trackFeatures}
+              analysisFeature={analysisFeature}
               onAdd={addTracks}
               onSearch={search}
             />

@@ -33,7 +33,7 @@
 }
 
 .feature {
-    width: 5vw;
+    min-width: 7vw;
     padding: 0 5px;
 }
 
