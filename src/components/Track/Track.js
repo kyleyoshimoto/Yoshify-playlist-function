@@ -7,7 +7,7 @@ function Track(props) {
 
     const addTrack = useCallback(
         (event) => {
-            props.onAdd(props.track);
+            props.onAdd(props.track, props.track.id);
         },
         [props.onAdd, props.track]
     );

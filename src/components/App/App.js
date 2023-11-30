@@ -16,6 +16,8 @@ function App() {
   const [trackFeatures, setTrackFeatures] = useState({});
   const [playlistName, setPlaylistName] = useState("New Playlist");
   const [playlistTracks, setPlaylistTracks] = useState([]);
+  const [playlistFeatures, setPlaylistFeatures] = useState({});
+  const [playlistFeaturesSummary, setPlaylistFeaturesSummary] = useState([]);
   const [playlists, setPlaylists] = useState([]);
   const [username, setUsername] = useState("User");
   const [userImage, setUserImage] = useState("https://upload.wikimedia.org/wikipedia/commons/thumb/b/b5/Windows_10_Default_Profile_Picture.svg/2048px-Windows_10_Default_Profile_Picture.svg.png");
@@ -39,6 +41,13 @@ function App() {
       return;
 
     setPlaylistTracks((prevTracks) => [...prevTracks, track]);
+    //setPlaylistFeaturesSummary((prev) => [...prev, trackFeatures.trackId]);
+    setPlaylistFeatures((prev) => ({
+      ...prev,
+      ...trackFeatures
+    }))
+    console.log("PLAYLIST FEATURES");
+    console.log(playlistFeatures);
     },
     [playlistTracks]
   );
@@ -46,6 +55,8 @@ function App() {
   const removeTracks = useCallback((track) => {
     setPlaylistTracks((prevTracks) => 
       prevTracks.filter((currentTrack) => currentTrack.id !== track.id))
+    setPlaylistFeaturesSummary((prev) =>
+      prev.filter((currentTrack) => currentTrack.value !== track.id))
   }, []);
 
   const updatePlaylistName = useCallback((name) => {
@@ -96,10 +107,12 @@ function App() {
           <Playlist 
             playlistName={playlistName}
             playlistTracks={playlistTracks}
+            trackFeatures={playlistFeatures}
+            featuresSummary={playlistFeaturesSummary}
+            analysisFeature={analysisFeature}
             onNameChange={updatePlaylistName}
             onRemove={removeTracks}
             onSave={savePlaylist}
-            //getTrackDetails={getTrackFeatures}
           />
           <Sidebar 
             playlists={playlists}
