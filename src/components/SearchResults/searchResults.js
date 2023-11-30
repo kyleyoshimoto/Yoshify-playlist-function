@@ -12,7 +12,7 @@ function SearchResults(props) {
             <h2>Search Results</h2>
             <hr />
             {props.searchResults.length == 0 
-                ? <h2>Search Results</h2> 
+                ? <p>...</p> 
                 : <TrackList 
                     tracks={props.searchResults}
                     trackFeatures={props.trackFeatures}

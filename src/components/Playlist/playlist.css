@@ -1,5 +1,6 @@
 .Playlist {
-    position: sticky;
+    position: relative;
+    top: -13rem;
     display: flex;
     flex-direction: column;
     align-items: center;

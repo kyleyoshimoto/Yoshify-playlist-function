@@ -1,5 +1,7 @@
 import React, { useCallback, useEffect, useState } from "react";
 
+import "./Analysis.css"
+
 function Analysis(props) {
     const [analysisFeature, setAnalysisFeature] = useState("");
     //const { getTrackFeatures } = props;
@@ -46,19 +48,18 @@ function Analysis(props) {
 
     return (
         <div className="Results-header">
-                <form>
-                    <label for="track-analysis">Track Analysis Ratings:</label>
-                    <select id="track-analysis" name="track-analysis" onChange={handleAnalysisSelection}>
-                        <option>Select</option>
-                        <option value="energy">Energy</option>
-                        <option value="danceability">Danceability</option>
-                        <option value="loudness">Loudness</option>
-                        <option value="tempo">Tempo</option>
-                        <option value="valence">Valence</option>
-                    </select>
-                </form>
-                {renderDescription()}
-            </div>
+            <form>
+                <label for="track-analysis">Track Analysis Ratings:</label>
+                <select id="track-analysis" name="track-analysis" onChange={handleAnalysisSelection}>
+                    <option>Select</option>                        <option value="energy">Energy</option>
+                    <option value="danceability">Danceability</option>
+                    <option value="loudness">Loudness</option>
+                    <option value="tempo">Tempo</option>
+                    <option value="valence">Valence</option>
+                </select>
+            </form>
+            {renderDescription()}
+        </div>
     )
 }
 
