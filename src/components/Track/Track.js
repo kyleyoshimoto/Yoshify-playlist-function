@@ -3,8 +3,7 @@ import React, {useCallback} from 'react';
 import './track.css';
 
 function Track(props) {
-    const { onAdd, onRemove, track } = props;
-    /*const [trackFeatures, setTrackFeatures] = useState([]);
+    const [trackFeatures, setTrackFeatures] = useState([]);
 
     const getTrackFeatures = useCallback(
         (event) => {
@@ -13,15 +12,15 @@ function Track(props) {
         [props.onSearch]
     );
 
-    useEffect(() => {
+    /*useEffect(() => {
         props.getTrackDetails(props.track.id).then(setTrackFeatures)
-    }, [props.onSearch]);
+    }, [props.onSearch]);*/
 
-    console.log(trackFeatures);*/
+    console.log(trackFeatures);
 
     const addTrack = useCallback(
         (event) => {
-            onAdd(track);
+            props.onAdd(props.track);
         },
         [onAdd, track]
     );
@@ -48,48 +47,51 @@ function Track(props) {
         );
     };
 
-    /*const renderAnalysis = () => {
-        if (props.analysisFeature === 'energy') {
+    const renderAnalysis = () => {
+        if (props.analysisFeature == 'energy') {
             return (
                 <div className='feature'>
                     <p>Energy:</p>
-                    <p>{(trackFeatures.energy * 100).toFixed(1)}</p>
+                    <p className="value">{(trackFeatures.energy * 100).toFixed(1)}</p>
                 </div>
             )
         } else if (props.analysisFeature === 'danceability') {
             return (
                 <div className='feature'>
                     <p>Danceability:</p>
-                    <p>{(trackFeatures.danceability * 100).toFixed(1)}</p>
+                    <p className="value">{(trackFeatures.danceability * 100).toFixed(1)}</p>
                 </div>
             )
         } else if (props.analysisFeature === 'loudness') {
             return (
                 <div className='feature'>
                     <p>Loudness:</p>
-                    <p>{trackFeatures.loudness}</p>
+                    <p className="value">{trackFeatures.loudness}</p>
                 </div>
             )
         } else if (props.analysisFeature === 'tempo') {
             return (
                 <div className='feature'>
                     <p>BPM:</p>
-                    <p>{trackFeatures.tempo}</p>
+                    <p className="value">{(trackFeatures.tempo).toFixed(1)}</p>
                 </div>
             )
         } else if (props.analysisFeature === 'valence') {
             return (
                 <div className='feature'>
                     <p>Valence:</p>
-                    <p>{(trackFeatures.valence * 100).toFixed(1)}</p>
+                    <p className="value">{(trackFeatures.valence * 100).toFixed(1)}</p>
                 </div>
             )
+        } else {
+            console.log("TRACK FEATURE ERROR");
+            return <></>
         }
     }*/
 
     return (
-        <div className="Track">
-            <img src={track.albumCover} alt={track.album} />
+        <div className="Track" onLoad={getTrackFeatures}>
+            <img src={props.track.albumCover} alt={props.track.album} />
             <div className="Track-information">
                 <h3>{track.name}</h3>
                 <p>{track.artist} | {track.album}</p>

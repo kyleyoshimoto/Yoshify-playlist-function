@@ -1,4 +1,4 @@
-const clientId = 'e387fa01d3fa40aaa56e3c2a097c2156';
+const client_id = 'e387fa01d3fa40aaa56e3c2a097c2156';
 const redirectUri = 'http://localhost:3000/'; // Have to add this to your accepted Spotify redirect URIs on the Spotify API.
 const scopes = [
     "user-read-currently-playing",
@@ -24,7 +24,7 @@ const Spotify = {
       window.history.pushState('Access Token', null, '/'); // This clears the parameters, allowing us to grab a new access token when it expires.
       return accessToken;
     } else {
-      const accessUrl = `https://accounts.spotify.com/authorize?client_id=${clientId}&response_type=token&scope=${scopes.join("%20")}&redirect_uri=${redirectUri}`;
+      const accessUrl = `https://accounts.spotify.com/authorize?client_id=${client_id}&response_type=token&scope=${scopes.join("%20")}&redirect_uri=${redirectUri}`;
       window.location = accessUrl;
     }
   },
@@ -32,9 +32,7 @@ const Spotify = {
   getUserProfile() {
     const accessToken = Spotify.getAccessToken();
     return fetch('https://api.spotify.com/v1/me', {
-      headers: {
-        Authorization: `Bearer ${accessToken}`
-      }
+      headers: {Authorization: `Bearer ${accessToken}`}
     }).then(response => {
       return response.json();
     }).then(jsonResponse => {
@@ -49,9 +47,7 @@ const Spotify = {
   search(term) {
     const accessToken = Spotify.getAccessToken();
     return fetch(`https://api.spotify.com/v1/search?type=track&limit=10&q=${term}`, {
-      headers: {
-        Authorization: `Bearer ${accessToken}`
-      }
+      headers: {Authorization: `Bearer ${accessToken}`}
     }).then(response => {
       return response.json();
     }).then(jsonResponse => {
@@ -69,12 +65,93 @@ const Spotify = {
     });
   },
 
+  getTrackAudioFeatures(term) {
+    const accessToken = Spotify.getAccessToken();
+    
+    return fetch(`https://api.spotify.com/v1/search?type=track&limit=10&q=${term}`, {
+      headers: { Authorization: `Bearer ${accessToken}` }
+    })
+    .then(response => {
+      if (!response.ok) {
+        throw new Error('Network response was not ok');
+      }
+      return response.json();
+    })
+    .then(jsonResponse => {
+      if (!jsonResponse.tracks) {
+        return [];
+      }
+      const trackIds = jsonResponse.tracks.items.map(track => track.id);
+      return fetch(`https://api.spotify.com/v1/audio-features?ids=${trackIds.join(",")}`, {
+        headers: { Authorization: `Bearer ${accessToken}` }
+      })
+      .then(response => {
+        if (!response.ok) {
+          throw new Error('Network response was not ok');
+        }
+        return response.json();
+      })
+      .then(jsonResponse => {
+        if (!jsonResponse.audio_features) {
+          return {};
+        }
+        const features = {};
+        for (let i = 0; i < jsonResponse.audio_features.length; i++) {
+          const audioFeature = jsonResponse.audio_features[i];
+          features[audioFeature.id] = {
+            danceability: audioFeature.danceability,
+            energy: audioFeature.energy,
+            loudness: audioFeature.loudness,
+            tempo: audioFeature.tempo,
+            valence: audioFeature.valence
+          };
+        }
+        console.log('TrackAudioFeatures -------');
+        console.log(features);
+        return features;
+      });
+    })
+    .catch(error => {
+      console.error('Error fetching data:', error);
+      // Handle error scenarios here
+      return {};
+    });
+  },
+  
+
+  /*getTrackAudioFeatures(trackIds) {
+    const accessToken = Spotify.getAccessToken();
+    return fetch(`https://api.spotify.com/v1/audio-features?ids=${trackIds}`, {
+      headers: headers
+    }).then(response => {
+      return response.json();
+    }).then(jsonResponse => {
+      if (!jsonResponse.audio_features) {
+        return {};
+      }
+      let features = {};
+      console.log('jsonResponse.audio_features');
+      console.log(jsonResponse.audio_features);
+      for (let i = 0; i < jsonResponse.audio_features.length; i++) {
+        console.log('yes');
+        features[jsonResponse.audio_features[i].id] = {
+          danceability: jsonResponse.audio_features[i].danceability,
+          energy: jsonResponse.audio_features[i].energy,
+          loudness: jsonResponse.audio_features[i].loudness,
+          tempo: jsonResponse.audio_features[i].tempo,
+          valence: jsonResponse.audio_features[i].valence
+        }
+      };
+      console.log('TrackAudioFeatures -------');
+      console.log(features);
+      return features;
+    })
+  },*/
+
   getPlaylists() {
     const accessToken = Spotify.getAccessToken();
     return fetch('https://api.spotify.com/v1/me/playlists', {
-        headers: {
-            Authorization: `Bearer ${accessToken}`
-        }
+        headers: {Authorization: `Bearer ${accessToken}`}
     }).then(response => {
         return response.json();
     }).then(jsonResponse => {
@@ -85,36 +162,13 @@ const Spotify = {
     })
     },
 
-  getTrackAudioFeatures(trackId) {
-    const accessToken = Spotify.getAccessToken();
-    return fetch(`https://api.spotify.com/v1/audio-features/${trackId}`, {
-      headers: {
-        Authorization: `Bearer ${accessToken}`
-      }
-    }).then(response => {
-      return response.json();
-    }).then(jsonResponse => {
-      if (!jsonResponse) {
-        return {};
-      }
-      return {
-        id: jsonResponse.id,
-        danceability: jsonResponse.danceability,
-        energy: jsonResponse.energy,
-        loudness: jsonResponse.loudness,
-        tempo: jsonResponse.tempo,
-        valence: jsonResponse.valence
-      }
-    })
-  },
-
   savePlaylist(name, trackUris) {
     if (!name || !trackUris.length) {
       return;
     }
 
     const accessToken = Spotify.getAccessToken();
-    const headers = { Authorization: `Bearer ${accessToken}` };
+    const headers = {Authorization: `Bearer ${accessToken}`};
     let userId;
 
     return fetch('https://api.spotify.com/v1/me', {headers: headers}

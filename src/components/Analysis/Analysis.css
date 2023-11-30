@@ -1,0 +1,24 @@
+.Results-header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    background-color: var(--backColor);
+}
+
+.Results-header label {
+    font-size: 2rem;
+    color: white;
+    margin: 1rem;
+}
+
+.Results-header > p {
+    width: 95%;
+    margin-bottom: 0.8rem;
+    color: white;
+}
+
+select {
+    height: 2rem;
+    font-size: 1.4rem;
+}
