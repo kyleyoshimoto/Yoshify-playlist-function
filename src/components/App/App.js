@@ -24,15 +24,15 @@ function App() {
     Spotify.search(input).then(setSearchResults);
   }, []);
 
-  const getTrackFeatures = useCallback((trackIds) => {
-    Spotify.getTrackAudioFeatures(trackIds).then(setTrackFeatures);
+  const getTrackFeatures = useCallback((input) => {
+    Spotify.getTrackAudioFeatures(input).then(setTrackFeatures);
     console.log("****************************")
     console.log(trackFeatures);
   }, []);
 
   const getAnalysisFeature = useCallback((feature) => {
     setAnalysisFeature(feature);
-  })
+  }, []);
 
   const addTracks = useCallback((track) => {
     if (playlistTracks.some((savedTrack) => savedTrack.id === track.id)) 
@@ -77,9 +77,11 @@ function App() {
         </header>
         <div className='App-playlist'>
           <div className="search">
-            <SearchBar onSearch={search}/>
+            <SearchBar 
+              onSearch={search}
+              getFeatures={getTrackFeatures}
+            />
             <Analysis 
-                getTrackFeatures={getTrackFeatures}
                 getFeature={getAnalysisFeature}
                 searchResults={searchResults}
             />

@@ -11,8 +11,6 @@ function TrackList(props) {
         <div className='Track-list'>
             {props.tracks.map((track) => {
                 let features = props.trackFeatures[track.id];
-                console.log("********* TRACK FEATURES . ID **********");
-                console.log(features);
                 return (
             <Track 
                 track={track} 

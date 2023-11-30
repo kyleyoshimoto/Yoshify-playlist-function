@@ -2,26 +2,31 @@ import React, { useCallback, useEffect, useState } from "react";
 
 function Analysis(props) {
     const [analysisFeature, setAnalysisFeature] = useState("");
-    const { searchResults, getTrackFeatures } = props;
+    //const { getTrackFeatures } = props;
 
     const handleAnalysisSelection = useCallback((event) => {
         props.getFeature(event.target.value);
         setAnalysisFeature(event.target.value);
-    }, [analysisFeature]);
+    }, [props]);
 
-    useEffect(() => {
-        if (!searchResults || !analysisFeature) {
+    /*useEffect(() => {
+        console.log("ANALYSIS COMPONENT RENDERED")
+        if (!props.searchResults) {
             console.log("No search results.");
+            return;
+        } else if (!analysisFeature) {
+            console.log("No analysis feature.");
+            console.log(props.searchResults);
             return;
         }
         console.log("search results have changed");
         let trackIds = [];
-        for (let i=0; i < searchResults.length; i++) {
-            trackIds.push(searchResults[i].id);
+        for (let i=0; i < props.searchResults.length; i++) {
+            trackIds.push(props.searchResults[i].id);
         }
         console.log(trackIds.join(","));
         getTrackFeatures(trackIds.join(","));
-    }, [searchResults]);
+    }, [getTrackFeatures, props.searchResults]);*/
 
     const renderDescription = () => {
         if (analysisFeature === "energy") {

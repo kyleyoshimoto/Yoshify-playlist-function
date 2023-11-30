@@ -9,8 +9,9 @@ function SearchBar(props) {
     const [searchInput, setSearchInput] = useState('');
 
     const search = useCallback(() => {
+        props.getFeatures(searchInput);
         props.onSearch(searchInput);
-    }, [props.onSearch, searchInput]);
+    }, [props.onSearch, props.getFeatures, searchInput]);
 
     return (
         <Container className='Search-bar'>

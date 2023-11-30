@@ -3,7 +3,7 @@ import React, {useCallback} from 'react';
 import './track.css';
 
 function Track(props) {
-    const { trackFeatures, track } = props;
+    const { trackFeatures } = props;
 
     const addTrack = useCallback(
         (event) => {
@@ -70,11 +70,14 @@ function Track(props) {
                     <p>{(trackFeatures.valence * 100).toFixed(1)}</p>
                 </div>
             )
+        } else {
+            console.log("TRACK FEATURE ERROR");
+            return <></>
         }
     }
 
     return (
-        <div className="Track" /*onLoad={getTrackFeatures}*/>
+        <div className="Track">
             <img src={props.track.albumCover} alt={props.track.album} />
             <div className="Track-information">
                 <h3>{props.track.name}</h3>
