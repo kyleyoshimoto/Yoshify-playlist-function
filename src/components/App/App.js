@@ -39,11 +39,10 @@ function App() {
   const addTracks = useCallback((track) => {
     if (playlistTracks.some((savedTrack) => savedTrack.id === track.id)) 
       return;
-    //setPlaylistFeaturesSummary((prev) => [...prev, trackFeatures.trackId]);
     setPlaylistFeatures((prev) => ({
       ...prev,
       ...trackFeatures
-    }))
+    }));
     setPlaylistTracks((prevTracks) => [...prevTracks, track]);
     },
     [playlistTracks]
