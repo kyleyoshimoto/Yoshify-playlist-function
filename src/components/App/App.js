@@ -26,6 +26,8 @@ function App() {
 
   const getTrackFeatures = useCallback((trackIds) => {
     Spotify.getTrackAudioFeatures(trackIds).then(setTrackFeatures);
+    console.log("****************************")
+    console.log(trackFeatures);
   }, []);
 
   const getAnalysisFeature = useCallback((feature) => {

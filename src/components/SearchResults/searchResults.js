@@ -5,6 +5,8 @@ import './searchResults.css';
 import TrackList from '../TrackList/trackList';
 
 function SearchResults(props) {
+    console.log("XXXXXXXXXX SEARCH RESULTS COMPONENT XXXXXXXXXX");
+    console.log(props.trackFeatures);
     return (
         <div className='Search-results'>
             <h2>Search Results</h2>
