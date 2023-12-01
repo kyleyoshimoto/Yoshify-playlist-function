@@ -11,9 +11,6 @@ Yoshify is a web-based application developed using React, enabling users to perf
 - Create custom playlists by adding tracks from the search results.
 - Save the personalized playlists to their Spotify accounts for future access.
 - Spotify Authentication: The application allows users to authenticate and access their Spotify accounts, enabling them to save playlists directly.
-- Search Functionality: Users can explore the Spotify library by searching for tracks, albums, or artists.
-- Playlist Creation: Users can create customized playlists by adding tracks from the search results.
-- Playlist Saving: Once created, users have the option to save their playlists to their Spotify accounts for seamless access across devices.
 
 ## Installation
 To run this project locally, follow these steps:
