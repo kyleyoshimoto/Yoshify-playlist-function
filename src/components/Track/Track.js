@@ -79,18 +79,20 @@ function Track(props) {
             return <></>
         }
     }
-
-    return (
-        <div className="Track">
-            <img src={props.track.albumCover} alt={props.track.album} />
-            <div className="Track-information">
-                <h3>{props.track.name}</h3>
-                <p>{props.track.artist} | {props.track.album}</p>
+    if (trackFeatures || props.isRemoval) {
+        return (
+            <div className="Track">
+                <img src={props.track.albumCover} alt={props.track.album} />
+                <div className="Track-information">
+                    <h3>{props.track.name}</h3>
+                    <p>{props.track.artist} | {props.track.album}</p>
+                </div>
+                {renderAnalysis()}
+                {renderAction()}
             </div>
-            {renderAnalysis()}
-            {renderAction()}
-        </div>
-    );
+        );
+    }
+    return <p>...</p>
 };
 
 export default Track;
