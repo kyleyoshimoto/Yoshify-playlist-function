@@ -28,8 +28,6 @@ function App() {
 
   const getTrackFeatures = useCallback((input) => {
     Spotify.getTrackAudioFeatures(input).then(setTrackFeatures);
-    console.log("****************************")
-    console.log(trackFeatures);
   }, []);
 
   const getAnalysisFeature = useCallback((feature) => {
@@ -37,15 +35,15 @@ function App() {
   }, []);
 
   const addTracks = useCallback((track) => {
-    if (playlistTracks.some((savedTrack) => savedTrack.id === track.id)) 
-      return;
     setPlaylistFeatures((prev) => ({
       ...prev,
       ...trackFeatures
     }));
+    if (playlistTracks.some((savedTrack) => savedTrack.id === track.id)) 
+      return;
     setPlaylistTracks((prevTracks) => [...prevTracks, track]);
     },
-    [playlistTracks]
+    [playlistTracks, playlistFeatures]
   );
 
   const removeTracks = useCallback((track) => {

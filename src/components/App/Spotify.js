@@ -46,7 +46,7 @@ const Spotify = {
 
   search(term) {
     const accessToken = Spotify.getAccessToken();
-    return fetch(`https://api.spotify.com/v1/search?type=track&limit=10&q=${term}`, {
+    return fetch(`https://api.spotify.com/v1/search?type=track&limit=24&q=${term}`, {
       headers: {Authorization: `Bearer ${accessToken}`}
     }).then(response => {
       return response.json();
@@ -68,7 +68,7 @@ const Spotify = {
   getTrackAudioFeatures(term) {
     const accessToken = Spotify.getAccessToken();
     
-    return fetch(`https://api.spotify.com/v1/search?type=track&limit=10&q=${term}`, {
+    return fetch(`https://api.spotify.com/v1/search?type=track&limit=24&q=${term}`, {
       headers: { Authorization: `Bearer ${accessToken}` }
     })
     .then(response => {
