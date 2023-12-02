@@ -7,6 +7,7 @@ import SearchSharpIcon from '@mui/icons-material/SearchSharp';
 
 function SearchBar(props) {
     const [searchInput, setSearchInput] = useState('');
+    const { onSearch } = props;
 
     const search = useCallback(() => {
         props.getFeatures(searchInput);
@@ -21,7 +22,7 @@ function SearchBar(props) {
                     placeholder="Search For Artists, Songs, or Albums"
                     type="input"
                     onKeyPress={event => {
-                        if (event.key == "Enter") {
+                        if (event.key === "Enter") {
                             search()
                         }
                     }}

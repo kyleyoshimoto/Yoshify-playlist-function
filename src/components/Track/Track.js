@@ -3,20 +3,33 @@ import React, {useCallback} from 'react';
 import './track.css';
 
 function Track(props) {
-    const { trackFeatures } = props;
+    const [trackFeatures, setTrackFeatures] = useState([]);
+
+    const getTrackFeatures = useCallback(
+        (event) => {
+            props.getTrackDetails(props.track.id).then(setTrackFeatures)
+        },
+        [props.onSearch]
+    );
+
+    /*useEffect(() => {
+        props.getTrackDetails(props.track.id).then(setTrackFeatures)
+    }, [props.onSearch]);*/
+
+    console.log(trackFeatures);
 
     const addTrack = useCallback(
         (event) => {
-            props.onAdd(props.track, props.track.id);
+            props.onAdd(props.track);
         },
-        [props.onAdd, props.track]
+        [onAdd, track]
     );
 
     const removeTrack = useCallback(
         (event) => {
-            props.onRemove(props.track);
+            onRemove(track);
         },
-        [props.onRemove, props.track]
+        [onRemove, track]
     );
 
     const renderAction = () => {
@@ -35,11 +48,7 @@ function Track(props) {
     };
 
     const renderAnalysis = () => {
-        if (!props.trackFeatures) {
-            console.log("No track features!!!!!")
-            return <></>
-        }
-        if (props.analysisFeature === 'energy') {
+        if (props.analysisFeature == 'energy') {
             return (
                 <div className='feature'>
                     <p>Energy:</p>
